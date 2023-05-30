@@ -3,7 +3,9 @@ fn main() {
     sycamore::render(|cx| {
         view! {
             cx,
-            p { "Hello, World!"}
+            div(class="container mx-auto") {
+                p(class="text-xl") { "Hello, World!"}
+            }
         }
     })
 }
