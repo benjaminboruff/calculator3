@@ -1,7 +1,5 @@
+use crate::{InputValue, OutputValue};
 use sycamore::prelude::*;
-
-use crate::InputValue;
-use crate::OutputValue;
 
 #[component]
 pub fn Output<G: Html>(cx: Scope) -> View<G> {

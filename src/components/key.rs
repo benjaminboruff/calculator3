@@ -1,8 +1,6 @@
-use evalexpr::*;
-//use log::info;
-use sycamore::prelude::*;
-
 use crate::{InputValue, OutputValue};
+use evalexpr::*;
+use sycamore::prelude::*;
 
 #[derive(Props)]
 pub struct KeyProps {
@@ -30,15 +28,12 @@ pub fn Key<G: Html>(cx: Scope, props: KeyProps) -> View<G> {
             state_input_value.set(InputValue("".to_string()));
         }
         "=" => {
-            // state_input_value.set(InputValue("1 + 1".to_string()));
             if state_input_value.get().is_valid() {
                 let calculated_val =
-                    eval(state_input_value.get().value().as_str());
+                    eval_number(state_input_value.get().value().as_str());
                 if let Ok(new_value) = calculated_val {
-                    let converted_val = new_value.as_number(); // int vals are converted to floats
-                    if let Ok(new_input) = converted_val {
-                        state_output_number.set(OutputValue(new_input));
-                    }
+                    let converted_val = new_value;
+                    state_output_number.set(OutputValue(converted_val));
                 }
             } else {
                 state_input_value
