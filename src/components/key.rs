@@ -36,8 +36,8 @@ pub fn Key<G: Html>(cx: Scope, props: KeyProps) -> View<G> {
                     eval(state_input_value.get().value().as_str());
                 if let Ok(new_value) = calculated_val {
                     let converted_val = new_value.as_number(); // int vals are converted to floats
-                    if let Ok(val) = converted_val {
-                        state_output_number.set(OutputValue(val));
+                    if let Ok(new_input) = converted_val {
+                        state_output_number.set(OutputValue(new_input));
                     }
                 }
             } else {
@@ -46,9 +46,9 @@ pub fn Key<G: Html>(cx: Scope, props: KeyProps) -> View<G> {
             }
         }
         "undo" => {
-            let mut input_value = state_input_value.get().value().clone();
-            if let Some(_item) = input_value.pop() {
-                state_input_value.set(InputValue(input_value));
+            let mut new_input = state_input_value.get().value().clone();
+            if let Some(_item) = new_input.pop() {
+                state_input_value.set(InputValue(new_input));
             } else {
                 state_input_value.set(InputValue("".to_string()));
             }

@@ -24,8 +24,8 @@ impl OutputValue {
 }
 
 fn validate_arithmetic(math: &String) -> bool {
-    let re =
-        Regex::new(r"-?\d+(?:\.\d+)?(\s*[-+/\*]\s+-?\d+(?:\.\d+)?)+").unwrap();
+    let re = Regex::new(r"^\s*-?(\d+\.?)?\d+\s*[+-/\*]\s*-?(\d+\.?)?\d+\s*$")
+        .unwrap();
 
     re.is_match(&math)
 }
