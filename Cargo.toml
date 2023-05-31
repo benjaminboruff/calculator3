@@ -8,4 +8,5 @@ edition = "2021"
 [dependencies]
 evalexpr = "10.0.0"
 log = "0.4.18"
+regex = "1.8.3"
 sycamore = "0.9.0-beta.1"

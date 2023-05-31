@@ -1,5 +1,6 @@
 use components::keypad::Keypad;
 use components::output::Output;
+use regex::Regex;
 use sycamore::prelude::*;
 
 mod components;
@@ -9,6 +10,10 @@ impl InputValue {
     fn value(&self) -> &String {
         &self.0
     }
+
+    fn is_valid(&self) -> bool {
+        validate_arithmetic(&self.0)
+    }
 }
 
 struct OutputValue(f64);
@@ -16,6 +21,13 @@ impl OutputValue {
     fn value(&self) -> f64 {
         self.0
     }
+}
+
+fn validate_arithmetic(math: &String) -> bool {
+    let re =
+        Regex::new(r"-?\d+(?:\.\d+)?(\s*[-+/\*]\s+-?\d+(?:\.\d+)?)+").unwrap();
+
+    re.is_match(&math)
 }
 
 #[component]
