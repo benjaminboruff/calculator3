@@ -512,7 +512,7 @@ async function __wbg_init(input) {
     if (wasm !== undefined) return wasm;
 
     if (typeof input === 'undefined') {
-        input = new URL('calculator3-2806508cb9b6a075_bg.wasm', import.meta.url);
+        input = new URL('calculator3-d484c39a7e5a8fbc_bg.wasm', import.meta.url);
     }
     const imports = __wbg_get_imports();
 

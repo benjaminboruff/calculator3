@@ -42,9 +42,12 @@ fn App<G: Html>(cx: Scope) -> View<G> {
     view! {
         cx,
         div(class="min-h-screen bg-neutral-500") {
-            div(class="container w-96 mx-auto") {
-                div(class="py-28") {
+            div(class="container min-w-sm max-w-sm mx-auto") {
+                div(class="pt-28 pb-20 px-6") {
                     Keypad {}
+                }
+                div() {
+                    p(class="pb-8 text-center text-white") { "Designed and coded by " a(class="text-blue-400", href="http://boruff.me"){ "Benjamin H Boruff "} " 2023"}
                 }
             }
         }
