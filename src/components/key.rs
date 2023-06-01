@@ -3,13 +3,14 @@ use evalexpr::*;
 use sycamore::prelude::*;
 
 #[derive(Props)]
-pub struct KeyProps {
+pub struct KeyProps<'cx, G: Html> {
     key: &'static str,
     value: &'static str,
+    attributes: Attributes<'cx, G>,
 }
 
 #[component]
-pub fn Key<G: Html>(cx: Scope, props: KeyProps) -> View<G> {
+pub fn Key<'cx, G: Html>(cx: Scope<'cx>, props: KeyProps<'cx, G>) -> View<G> {
     let state_output_number: &Signal<OutputValue> = use_context(cx);
     let state_input_value: &Signal<InputValue> = use_context(cx);
 
@@ -55,6 +56,8 @@ pub fn Key<G: Html>(cx: Scope, props: KeyProps) -> View<G> {
     };
 
     view! {cx,
-        button(on:click=move|_| handle_click(props.value), id=props.key, class="bg-blue-200 rounded-lg min-w-full") { (props.value) }
+        div( ..props.attributes ) {
+            button(class="w-full", on:click=move|_| handle_click(props.value), id=props.key) { (props.value) }
+        }
     }
 }

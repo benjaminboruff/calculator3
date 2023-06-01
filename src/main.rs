@@ -1,5 +1,5 @@
 use components::keypad::Keypad;
-use components::output::Output;
+
 use regex::Regex;
 use sycamore::prelude::*;
 
@@ -41,15 +41,9 @@ fn App<G: Html>(cx: Scope) -> View<G> {
     input_text.set(InputValue("".to_string()));
     view! {
         cx,
-        div(class="container mx-auto") {
-            div(class="flex flex-col gap-6") {
-                div(class="p-2") {
-                    p(class="text-xl") { "Calculator"}
-                }
-                div(class="p-4") {
-                    Output {}
-                }
-                div(class="p-4") {
+        div(class="min-h-screen bg-neutral-500") {
+            div(class="container w-96 mx-auto") {
+                div(class="py-28") {
                     Keypad {}
                 }
             }
