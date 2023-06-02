@@ -47,7 +47,7 @@ fn App<G: Html>(cx: Scope) -> View<G> {
                     Keypad {}
                 }
                 div() {
-                    p(class="pb-8 text-center text-white") { "Designed and coded by " a(class="text-lg font-semibold text-sky-800", href="http://boruff.me"){ "Benjamin H Boruff "} " 2023"}
+                    p(class="pb-8 text-center text-white") { "Designed and coded by " a(class="text-lg font-semibold text-sky-800", href="http://boruff.me"){ " Benjamin H Boruff "} "\u{00a9}2023"}
                 }
             }
         }
